@@ -1,4 +1,4 @@
-package com.giorgosgaganis.mainwindow.sximata;
+package com.giorgosgaganis.mainwindow.drawables;
 
 import java.awt.*;
 

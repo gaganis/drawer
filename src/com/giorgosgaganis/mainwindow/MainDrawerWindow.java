@@ -1,8 +1,9 @@
 package com.giorgosgaganis.mainwindow;
 
-import com.giorgosgaganis.mainwindow.sximata.Sxima;
-import com.giorgosgaganis.mainwindow.sximata.SximaFactory;
-import com.giorgosgaganis.mainwindow.sximata.SximaType;
+import com.giorgosgaganis.mainwindow.drawables.Drawable;
+import com.giorgosgaganis.mainwindow.drawables.DrawableType;
+import com.giorgosgaganis.mainwindow.drawables.Sxima;
+import com.giorgosgaganis.mainwindow.drawables.DrawableFactory;
 
 import javax.swing.*;
 
@@ -38,10 +39,10 @@ public class MainDrawerWindow extends AbstractDrawerWindow {
         System.out.println("x = " + x);
         System.out.println("y = " + y);
         System.out.println("selectedItem = " + selectedItem);
-        if (selectedItem instanceof SximaType) {
-            SximaFactory factory = new SximaFactory();
-            Sxima sxima = factory.
-                    getSximaForTypeAndLocation((SximaType) selectedItem,
+        if (selectedItem instanceof DrawableType) {
+            DrawableFactory factory = new DrawableFactory();
+            Drawable sxima = factory.
+                    getSximaForTypeAndLocation((DrawableType) selectedItem,
                             x, y);
 
             drawingPanel.addSxima(sxima);
@@ -51,9 +52,10 @@ public class MainDrawerWindow extends AbstractDrawerWindow {
     @Override
     protected void addTypesToComboBox(JComboBox jComboBox) {
 
-        jComboBox.addItem(SximaType.SQUARE);
-        jComboBox.addItem(SximaType.CIRCLE);
-        jComboBox.addItem(SximaType.RECTANGLE);
+        jComboBox.addItem(DrawableType.SQUARE);
+        jComboBox.addItem(DrawableType.CIRCLE);
+        jComboBox.addItem(DrawableType.RECTANGLE);
+        jComboBox.addItem(DrawableType.GREETING_WORLD);
     }
 
 
