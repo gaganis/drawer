@@ -1,6 +1,10 @@
 package com.giorgosgaganis.mainwindow;
 
-import javax.swing.JComboBox;
+import com.giorgosgaganis.mainwindow.sximata.Sxima;
+import com.giorgosgaganis.mainwindow.sximata.SximaFactory;
+import com.giorgosgaganis.mainwindow.sximata.SximaType;
+
+import javax.swing.*;
 
 /*
 Our client wants us to draw shapes. To do this he has has given
@@ -20,7 +24,6 @@ We are also given a DrawingJPanel that we can use to draw our shapes.
   height 50.
 */
 
- */
 public class MainDrawerWindow extends AbstractDrawerWindow {
 
     public MainDrawerWindow() {
@@ -28,18 +31,29 @@ public class MainDrawerWindow extends AbstractDrawerWindow {
     }
 
     @Override
-    protected void addSximaToPanel(Object selectedItem, DrawingJPanel drawingPanel, int x, int y) {
+    protected void addSximaToPanel(Object selectedItem,
+                                   DrawingJPanel drawingPanel,
+                                   int x, int y) {
         System.out.println("Mouse has been clicked");
         System.out.println("x = " + x);
         System.out.println("y = " + y);
         System.out.println("selectedItem = " + selectedItem);
+        if (selectedItem instanceof SximaType) {
+            SximaFactory factory = new SximaFactory();
+            Sxima sxima = factory.
+                    getSximaForTypeAndLocation((SximaType) selectedItem,
+                            x, y);
+
+            drawingPanel.addSxima(sxima);
+        }
     }
 
     @Override
     protected void addTypesToComboBox(JComboBox jComboBox) {
 
-        jComboBox.addItem("Gaganis");
-        jComboBox.addItem("Giorgos");
+        jComboBox.addItem(SximaType.SQUARE);
+        jComboBox.addItem(SximaType.CIRCLE);
+        jComboBox.addItem(SximaType.RECTANGLE);
     }
 
 
