@@ -8,7 +8,6 @@ import java.awt.BorderLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import com.giorgosgaganis.sximata.SximaType;
 
 public abstract class AbstractDrawerWindow {
     private JComboBox sximaComboBox;
@@ -35,7 +34,7 @@ public abstract class AbstractDrawerWindow {
                 final int y = e.getY();
                 final Object selectedItem = sximaComboBox.getSelectedItem();
 
-                addSximaToPanel((SximaType) selectedItem, drawingPanel, x, y);
+                addSximaToPanel(selectedItem, drawingPanel, x, y);
 
                 SwingUtilities.invokeLater(new Runnable() {
                     @Override

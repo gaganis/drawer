@@ -1,0 +1,1 @@
+The next is we are asked to draw "Hello World! I am not a Shape!"
