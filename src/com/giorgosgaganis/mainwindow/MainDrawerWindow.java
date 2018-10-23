@@ -1,5 +1,11 @@
 package com.giorgosgaganis.mainwindow;
 
+import com.giorgosgaganis.mainwindow.positioning.ScreenPositioner;
+import com.giorgosgaganis.mainwindow.positioning.StupidPositioner;
+import com.giorgosgaganis.mainwindow.sximata.Drawable;
+import com.giorgosgaganis.mainwindow.sximata.DrawableFactory;
+import com.giorgosgaganis.mainwindow.sximata.DrawableType;
+
 import javax.swing.JComboBox;
 
 /*
@@ -32,13 +38,23 @@ public class MainDrawerWindow extends AbstractDrawerWindow {
         System.out.println("x = " + x);
         System.out.println("y = " + y);
         System.out.println("selectedItem = " + selectedItem);
+
+        DrawableFactory drawableFactory = new DrawableFactory();
+
+        if(selectedItem instanceof DrawableType) {
+            Drawable drawable = drawableFactory.getSximaForTypeAndXy((DrawableType) selectedItem, x, y, new ScreenPositioner(800, 600));
+            drawingPanel.add(drawable);
+        }
     }
 
     @Override
     protected void addTypesToComboBox(JComboBox jComboBox) {
 
-        jComboBox.addItem("Gaganis");
-        jComboBox.addItem("Giorgos");
+        jComboBox.addItem(DrawableType.SQUARE);
+        jComboBox.addItem(DrawableType.CIRCLE);
+        jComboBox.addItem(DrawableType.RECTANGLE);
+        jComboBox.addItem(DrawableType.WORLDGREETER);
+        jComboBox.addItem("gaganis");
     }
 
 
